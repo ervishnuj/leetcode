@@ -1,0 +1,16 @@
+class removeElement {
+    public int removeElement(int[] nums, int val) {
+        return removeDuplicate(nums,val,0,nums.length-1)+1;
+    }
+    int removeDuplicate(int[] arr,int val, int i, int j){
+        
+        while(j>=i&&val==arr[j])j--;
+        if(i>=j)return j;
+        if(arr[i]==val&&j>i){
+            arr[i]+=arr[j];
+            arr[j]=arr[i]-arr[j];
+            arr[i]-=arr[j];
+        }
+        return removeDuplicate(arr,val,i+1,j);
+    }
+}
