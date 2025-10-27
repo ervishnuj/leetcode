@@ -1,0 +1,15 @@
+Class RemoveDuplicatesfromSortedArray{
+public int removeDuplicates(int[] nums) {
+        
+        return duplicateCount(nums,0,1,0)+1;
+    }
+    int duplicateCount(int[] num,int i,int j,int count){
+        if(j>=num.length)return count;
+        if(num[i]<num[j]){
+            count++;
+            num[count]=num[j];
+        }
+        return duplicateCount(num,i+1,j+1,count);
+
+    }
+}
