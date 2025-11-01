@@ -1,0 +1,21 @@
+class DeleteNodesFromLinkedListPresentinArray {
+    public ListNode modifiedList(int[] nums, ListNode head) {
+        HashSet<Integer> hs=new HashSet<>();
+        for(int i=0;i<nums.length;i++){
+            hs.add(nums[i]);
+        }
+        ListNode list=head;
+        ListNode dummy=new ListNode(0);
+        dummy.next=head;
+        ListNode dm=dummy;
+        while(list!=null){
+            if(hs.contains(list.val)){
+                dm.next=list.next;
+            }else{
+                dm=dm.next;
+            }
+            list=list.next;
+        }
+        return dummy.next;
+    }
+}
