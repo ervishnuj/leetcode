@@ -1,0 +1,17 @@
+public int lengthOfLongestSubstring(String s) {
+        HashMap<Character,Integer> map=new HashMap<>();
+        int maxWindow=0;
+        int sumWindow=0;
+        int startingWindow=0;
+        
+        for(int endingWindow=0;endingWindow<s.length();endingWindow++){
+            char ch=s.charAt(endingWindow);
+            if(map.containsKey(ch)){
+                startingWindow=Math.max(startingWindow,map.get(ch)+1);
+            }
+            map.put(ch,endingWindow);
+            sumWindow=endingWindow-startingWindow+1;
+            maxWindow=Math.max(maxWindow,sumWindow);
+        }
+        return maxWindow;
+    }
