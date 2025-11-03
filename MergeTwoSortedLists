@@ -23,6 +23,29 @@ public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
             // addList(dummy,list2);
             dummy.next=list2;
         }
+//        addList(dummy,list1,list2);//recursion using code
+
         return list.next;
+    }
+        void addList(ListNode list,ListNode list1,ListNode list2){
+        if(list1==null||list2==null){
+            if(list1!=null){
+                list.next=list1;
+            }else{
+                list.next=list2;
+            }
+            return;
+        }
+    
+        
+        if(list1.val<=list2.val){
+            list.next=list1;
+            list1=list1.next;
+        }else{
+            list.next=list2;
+            list2=list2.next;
+        }        
+        addList(list.next,list1,list2);
+
     }
 }
