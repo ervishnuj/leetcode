@@ -1,0 +1,27 @@
+class FindFirstIndexInString {
+    public int strStr(String haystack, String needle) {
+        int needlesize=needle.length();
+        int haystacksize=haystack.length();
+        int needStart=0;int haystart=0;
+        boolean isContain=false;
+        if(haystacksize<needlesize){
+            return -1;
+        }
+        while(haystart<haystacksize){
+                if(haystack.charAt(haystart)==needle.charAt(needStart)){
+                    haystart++;
+                    needStart++;
+                    if(needStart==needlesize){
+                        return haystart-needStart;
+                    }
+                }else{
+                    haystart=haystart-needStart+1;
+                    needStart=0;
+                }
+        }
+        
+        return -1;
+        
+    }
+
+}
