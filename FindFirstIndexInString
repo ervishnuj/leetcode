@@ -2,8 +2,8 @@ class FindFirstIndexInString {
     public int strStr(String haystack, String needle) {
         int needlesize=needle.length();
         int haystacksize=haystack.length();
-        int needStart=0;int haystart=0;
-        boolean isContain=false;
+        int needStart=0;
+        int haystart=0;
         if(haystacksize<needlesize){
             return -1;
         }
@@ -19,9 +19,7 @@ class FindFirstIndexInString {
                     needStart=0;
                 }
         }
-        
         return -1;
-        
     }
 
 }
