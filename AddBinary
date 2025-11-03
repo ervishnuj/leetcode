@@ -1,0 +1,21 @@
+class AddBinary {
+    public String addBinary(String a, String b) {
+         StringBuilder st=new StringBuilder();
+        // String st="";
+        int borrow=0;
+        
+        int asize=a.length()-1;
+        int bsize=b.length()-1;
+        // int bigsize=asize<bsize?asize:bsize;
+        
+        while(asize>=0||bsize>=0||borrow>0){
+        int sum=borrow;
+        if(0<=asize)sum+=a.charAt(asize--)-'0';
+        if(0<=bsize)sum+=b.charAt(bsize--)-'0';
+        // st=(sum%2)+st;
+        st.append(sum%2);
+        borrow=sum/2;
+        }
+        return st.reverse().toString();
+    }
+}
