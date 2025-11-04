@@ -13,7 +13,7 @@
  *     }
  * }
  */
-class ConvertSortedArrayToBinarySearchTree {
+class MinimumDepthofBinaryTree {
     public int minDepth(TreeNode root) {
         if(root==null)return 0;
         // if(root.left!=null||root.right!=null)
