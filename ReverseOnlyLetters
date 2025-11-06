@@ -1,0 +1,19 @@
+class ReverseOnlyLetters {
+    public String reverseOnlyLetters(String s) {
+        int i=0;
+        int len=s.length();
+        String dummy=s.replaceAll("[^a-zA-Z]","");
+        int j=dummy.length()-1;
+        StringBuilder st=new StringBuilder();
+        while(i<len){
+            if(s.charAt(i)<65||s.charAt(i)>90&&s.charAt(i)<97||s.charAt(i)>122){
+                st.append(s.charAt(i));
+            }else if(j>=0){
+               st.append(dummy.charAt(j));
+               j--;
+            }
+            i++;
+        }
+        return st.toString();
+    }
+}
