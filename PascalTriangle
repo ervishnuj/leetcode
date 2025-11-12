@@ -1,0 +1,20 @@
+class PascalTriangle {
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> ll=new ArrayList<>();
+        for(int i=0;i<numRows;i++){
+            int start=0;
+        int end=i;
+        List<Integer> al=new ArrayList<>();
+            while(start<=end){
+                if(start==0||start==end)al.add(1);
+                else{
+                    if(start>0&&start<end)al.add((ll.get(ll.size()-1).get(start))+(ll.get(ll.size()-1).get(end-start)));
+                
+                }
+                start++;
+            }
+            ll.add(al);
+        }
+        return ll;
+    }
+}
