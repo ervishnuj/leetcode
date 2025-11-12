@@ -1,0 +1,27 @@
+class IsomorphicStrings
+ {
+    public boolean isIsomorphic(String s, String t) {
+        if(s.length()!=t.length())return false;
+        //         s=s.toLowerCase();
+        // t=t.toLowerCase();
+        int[] ch=new int[256];
+        int[] ch1=new int[256];
+
+        // boolean[] b=new boolean[1000];
+        // boolean[] b1=new boolean[1000];
+
+        for(int i=0;i<s.length();i++){
+            char c1=s.charAt(i);
+            char c2=t.charAt(i);
+            if(ch[c1]==0&&ch1[c2]==0){
+                ch[c1]=c2;
+                // b[s.charAt(i)]=true;
+                ch1[c2]=c1;
+                // b1[t.charAt(i)]=true;
+            }else if(ch[c1]!=c2||ch1[c2]!=c1){
+                return false;
+            }
+        }
+        return true;
+    }
+}
