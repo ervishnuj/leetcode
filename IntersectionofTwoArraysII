@@ -1,0 +1,26 @@
+class IntersectionofTwoArraysII
+ {
+    public int[] intersect(int[] n1, int[] n2) {
+        Arrays.sort(n1);
+        Arrays.sort(n2);
+        List<Integer> al=new ArrayList<>();
+        int i=0;int j=0;
+        while(i<n1.length&&j<n2.length){
+            if(n1[i]==n2[j]){
+                al.add(n1[i]);
+                i++;j++;
+            }else if(n1[i]>n2[j]){
+                j++;
+            }else{
+                i++;
+            }
+        }
+        int[] arr=new int[al.size()];
+        i=0;
+        for(int a:al){
+            arr[i++]=a;
+        }
+        return arr;
+        // return al.toArray(new int[0]);
+    }
+}
