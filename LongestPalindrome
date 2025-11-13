@@ -1,0 +1,23 @@
+class LongestPalindrome
+ {
+    public int longestPalindrome(String s) {
+        HashMap<Character,Integer> map=new HashMap<>();
+        char[] ch =s.toCharArray();
+        for(char c:ch){
+            if(map.containsKey(c)){
+                map.put(c,map.get(c)+1);
+            }else{
+                map.put(c,1);
+            }
+        }
+        boolean mod2=false;
+        int result=0;
+        for(Integer i:map.values()){
+            if(i%2==0)result+=i;
+            else{ result+=i-1;
+            mod2=true;}
+        }
+        if(mod2)return result+1;
+        return result;
+    }
+}
