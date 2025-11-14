@@ -1,0 +1,12 @@
+class DedectCapital {
+    public boolean detectCapitalUse(String word) {
+        int start=1;
+        if(word.charAt(0)<91)start=2;
+        for(int i=start,j=i-1;i<word.length();i++){
+            int charI=word.charAt(i);
+            int charJ=word.charAt(j);
+            if(charJ<91&&charI>91||charI<91&&charJ>91)return false;
+        }
+        return true;
+    }
+}
