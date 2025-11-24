@@ -1,0 +1,23 @@
+class Searcha2DMatrix {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        int x=matrix[0].length;
+        int y=matrix.length;
+        int start=0;
+        while(start<y){
+            int i=0;int j=x-1;
+            if(matrix[start][i]<=target&&matrix[start][j]>=target){
+                if(matrix[start][i]==target||matrix[start][j]==target){
+                    return true;
+                }
+                i++;
+                while(i<=j){
+                    if(matrix[start][i++]==target){
+                    return true;
+                    }
+                }
+            }
+            start++; 
+        }     
+        return false;
+    }
+}
