@@ -1,0 +1,45 @@
+class NextPermutation {
+    public void nextPermutation(int[] nums) {
+        int index=-1;
+        for(int i=nums.length-1;i>0;i--){
+            if(nums[i]>nums[i-1]){
+                index=i-1;
+                break;
+                // secondIndex=i;
+                // int j=i;
+                // while(j<nums.length&&nums[second]>nums[j++]){
+                //     second=j-1;
+                // }
+            }
+        }
+        if(index==-1){
+            reverse(0,nums.length-1,nums);
+            return;
+        }
+        for(int i=nums.length-1;i>index;i--){
+            if(nums[index]<nums[i]){
+                swap(index,i,nums);                
+                break;
+            }
+        }
+        
+        reverse(index+1,nums.length-1,nums);
+
+        
+    }
+    void reverse(int i,int j,int[] arr){
+        while(i<j){
+            int temp=arr[i];
+            arr[i]=arr[j];
+            arr[j]=temp;
+            j--;
+            i++;
+            
+        }
+    }
+    void swap(int i,int j,int[] arr){
+        int temp=arr[i];
+        arr[i]=arr[j];
+        arr[j]=temp;
+    }
+}
