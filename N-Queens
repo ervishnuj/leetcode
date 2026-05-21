@@ -1,0 +1,40 @@
+class Solution {
+    public List<List<String>> solveNQueens(int n) {
+        List<List<String>> res=new ArrayList<>();
+        Set<Integer> cols=new HashSet<>();
+        Set<Integer> ldiag=new HashSet<>();
+        Set<Integer> rdiag=new HashSet<>();
+        queenBackTrack(n,0,new int[n],cols,ldiag,rdiag,res);
+        return res;
+    }
+
+    private void queenBackTrack(int n,int row,int[] queen,Set<Integer> cols,Set<Integer> ldiag,Set<Integer> rdiag,List<List<String>> res){
+        if(n==row){
+            res.add(generateBoard(n,queen));
+            return ;
+        }
+        for(int col=0;col<n;col++){
+            if(cols.contains(col)||ldiag.contains(row+col)||rdiag.contains(row-col))
+                continue;
+            queen[row]=col;
+            cols.add(col);
+            ldiag.add(row+col);
+            rdiag.add(row-col);
+            queenBackTrack(n,row+1,queen,cols,ldiag,rdiag,res);
+            cols.remove(col);
+            ldiag.remove(row+col);
+            rdiag.remove(row-col);
+        }
+    }
+
+    private List<String> generateBoard(int n,int[] queen){
+        List<String> res=new ArrayList<>();
+        for(int col=0;col<n;col++){
+            char[] row=new char[n];
+            Arrays.fill(row,'.');
+            row[queen[col]]='Q';
+            res.add(new String(row));
+        }
+        return res;
+    }
+}
