@@ -1,0 +1,21 @@
+class Solution {
+    public String removeDuplicates(String s) {
+
+        int n=s.length();
+        List<Character> al=new ArrayList<>();
+        for(int i=0;i<n;i++){
+            char curr=s.charAt(i);
+            int index=al.size()-1;
+            if(!al.isEmpty()&&al.get(index)==curr){
+                al.remove(index);
+            }else{
+                al.add(curr);
+            }
+        }
+        StringBuilder st=new StringBuilder();
+        for(Character ch:al){
+            st.append(ch);
+        }
+        return st.toString();
+    }
+}
