@@ -1,0 +1,21 @@
+class Solution {
+    public int numberOfSpecialChars(String word) {
+        // word=word.tolowercase();
+        int count=0;
+        boolean[] bL=new boolean[26];
+        boolean[] bU=new boolean[26];
+
+        for(int i=0;i<word.length();i++){
+            char ch=word.charAt(i);
+            if((ch>='a'&&ch<='z')&&!bL[ch-'a']){
+                if(bU[ch-'a']){count++;}
+                bL[ch-'a']=true;
+                
+            }else if((ch>='A'&&ch<='Z')&&!bU[ch-'A']){
+                if(bL[ch-'A']){count++;}
+                bU[ch-'A']=true;
+            }
+        }
+        return count;
+    }
+}
