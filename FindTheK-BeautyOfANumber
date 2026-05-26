@@ -1,0 +1,28 @@
+class Solution {
+    public int divisorSubstrings(int num, int k) {
+        if(k==0)return k;
+        int count=0;
+        int n=num;
+        
+        ArrayList<Integer> al=new ArrayList<>();
+        // al.add(0);
+        while(n>0){
+            al.add(0,n%10);
+            n/=10;
+        }
+        // al.remove(al.size()-1);
+        int temp=0;
+        int len=0;
+        int div=(int)Math.pow(10,k-1);
+        for(Integer i:al){
+            temp*=10;
+            temp+=i;
+           
+            if(k<=++len){
+                if(temp!=0&&num%temp==0)count++;
+                temp%=div;
+            }
+        }
+        return count;
+    }
+}
