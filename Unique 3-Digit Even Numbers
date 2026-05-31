@@ -1,0 +1,39 @@
+class Solution {
+    public int totalNumbers(int[] digits) {
+        int count=0;
+        int[] dig=new int[10];
+        Arrays.fill(dig,0);
+        for(int i:digits){
+            dig[i]++;
+            // System.out.println("digit:"+i+" -> "+dig[i]);
+        }
+        for(int i=100;i<=998;i+=2){
+            int last=i%10;
+            int lastsecond=((int)i/10)%10;
+            //=(i-last)%100>0?((i-last)%100)/10:0;
+            
+            int first=(int)i/100;
+            
+            if(dig[last]-->0){
+                // System.out.println("dig[last] "+last+" : "+dig[last]);
+                // System.out.println("dig[lastsecond] "+dig[lastsecond]--);
+                // System.out.println("dig[first] "+dig[first]);
+                if(dig[lastsecond]-->0){
+                // System.out.println("dig[lastsecond] "+lastsecond+" : "+dig[lastsecond]);
+
+                    if(dig[first]>0){
+                        // System.out.println("dig[first] "+first+" : "+dig[first]);
+
+                        count++;
+                        // System.out.println("count "+count);
+                        // System.out.println(" first num: "+first+" med num:"+lastsecond+" Last digit:"+last);
+                    }
+                }
+                dig[lastsecond]++;
+                
+            }
+            dig[last]++;
+        }
+        return count;
+    }
+}
