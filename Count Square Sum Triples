@@ -1,0 +1,18 @@
+class Solution {
+    public int countTriples(int n) {
+        int count=0;
+        for(int i=1;i<n;i++){
+            // double rhs1=i*i;
+            for(int j=i+1;j<n;j++){
+                // int rhs2=j*j;
+                double value=Math.sqrt((i*i)+(j*j));
+                // double value=Math.sqrt(rhs1+rhs2);
+                if(value%1==0&&(int)value<=n)count+=2;
+            }
+            // if(rhs%1!=(double)0)continue;
+            // else if((int)rhs<=n)count+=2;
+        }
+        
+        return count;
+    }
+}
