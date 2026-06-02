@@ -1,0 +1,116 @@
+class Solution {
+    public String intToRoman(int num) {
+
+        int[] values = {
+            1000, 900, 500, 400,
+            100,  90,  50,  40,
+            10,   9,   5,   4,
+            1
+        };
+
+        String[] symbols = {
+            "M", "CM", "D", "CD",
+            "C", "XC", "L", "XL",
+            "X", "IX", "V", "IV",
+            "I"
+        };
+
+        StringBuilder sb=new StringBuilder();
+        for(int i=0;i<values.length;i++){
+            while(num>=values[i]){
+                sb.append(symbols[i]);
+                num-=values[i];
+            }
+        }
+        return sb.toString();
+    }
+}
+// class Solution {
+//     public String intToRoman(int num) {
+//         Map<Integer,String> map=new HashMap<>();
+//         map.put(5,"V");
+//         map.put(10,"X");
+//         map.put(50,"L");
+//         map.put(100,"C");
+//         map.put(500,"D");
+//         map.put(1000,"M");
+//         String st=new String();
+        
+//         if(num>=1000){
+//             int temp=(int)num/1000;
+//             while(temp-->0)st+="M";
+//             num%=1000;
+//         }
+//         System.out.println(1000+st);
+//         if(num>=900){
+//             st+="CM";
+//             num-=900;
+//         }
+//         System.out.println(900+st);
+//         if(num>=500){
+//             st+="D";
+//             num-=500;
+//             while(num>=100){
+//                 st+="C";
+//                 num-=100;
+//             }
+//         }
+//         System.out.println(500+st);
+//         if(num>=100){
+//             if(num>=400){
+//                 st+="CD";
+//                 num-=400;
+//             }
+//             while(num>=100){
+//                 st+="C";
+//                 num-=100;
+//             }
+//         }
+//         System.out.println(400+st);
+//         if(num>=90){
+//             st+="LC";
+//             num-=90;
+//         }
+//         System.out.println(90+st);
+//         if(num>=50){
+//             st+="L";
+//             num-=50;
+//             while(num>=10){
+//                 st+="X";
+//                 num-=10;
+//             }
+//         }
+//         System.out.println(50+st);
+//         if(num>=40){
+//             st+="LX";
+//             num-=40;
+//         }
+//             while(num>=10){
+//                 st+="X";
+//                 num-=10;
+//             }
+            
+//         System.out.println(10+st);
+//         if(num==9){
+//             st+="IX";
+//             num-=9;
+//         }
+        
+//         System.out.println(9+st);
+//         if(num>=5){
+//             st+="V";
+//             num-=5;
+            
+//         }
+//         System.out.println(5+st);
+//         if(num==4){
+//             st+="IV";
+//         }
+//         System.out.println(4+st);
+//         while(num-->0){
+//                 st+="I";
+//         }
+//         System.out.println(1+st);
+//         return st;
+//     }
+// }
