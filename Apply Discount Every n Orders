@@ -1,0 +1,49 @@
+class Cashier {
+    private int discount;
+    private int[] products;
+    private int[] prices;
+    private int n;
+    private int customerCount;
+    HashMap<Integer,Integer> map=new HashMap<>();
+    public Cashier(int n, int discount, int[] products, int[] prices) {
+        this.discount=discount;
+        this.products=products;
+        this.prices=prices;
+        this.n=n;
+        for(int i=0;i<products.length;i++){
+            map.put(products[i],prices[i]);
+        }
+        System.out.println(map);
+        customerCount=0;
+    }
+    
+    public double getBill(int[] product, int[] amount) {
+        double res=0.0;
+        customerCount++;
+        for(int i=0;i<product.length;i++){
+            System.out.println("Product:"+map.get(product[i]));
+            System.out.println("Amount: "+amount[i]);
+            double bill=map.get(product[i])*amount[i];
+            System.out.println("Bill: "+bill);
+            System.out.println("discount:"+ ((double)(100-discount)/100));
+            double dis=((double)(100-discount)/100);
+            if(customerCount%n!=0)dis=1;
+            double total=bill*dis;
+            System.out.println("total: "+total);
+            res+=total;
+            // for(int j=0;j<products.length;j++){
+            //     if(products[j]==product[i]){
+            //         res+=(prices[j]*amount[i])*((100-discount)/100);
+            //         break;
+            //     }
+            // }
+        }
+        return res;
+    }
+}
+
+/**
+ * Your Cashier object will be instantiated and called as such:
+ * Cashier obj = new Cashier(n, discount, products, prices);
+ * double param_1 = obj.getBill(product,amount);
+ */
