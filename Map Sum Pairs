@@ -1,0 +1,42 @@
+class MapSum {
+    private String[] key;
+    private int[] val;
+    private int len;
+    // private int sum;
+    public MapSum() {
+        this.key=new String[10000];
+        this.val=new int[10000];
+        this.len=0;
+        // this.sum=0;
+    }
+    
+    public void insert(String key, int val) {
+        // int index=-1;
+        for(int i=0;i<len;i++){
+            if(this.key[i].equals(key)){
+                this.val[i]=val;
+                return;
+            }
+        }
+        this.key[len]=key;
+        this.val[len++]=val;
+    }
+    
+    public int sum(String prefix) {
+        int sum=0;
+        for(int i=0;i<len;i++){
+            if(key[i].startsWith(prefix)){
+                sum+=val[i];
+            }
+        }
+        // sum+=temp;
+        return sum;
+    }
+}
+
+/**
+ * Your MapSum object will be instantiated and called as such:
+ * MapSum obj = new MapSum();
+ * obj.insert(key,val);
+ * int param_2 = obj.sum(prefix);
+ */
