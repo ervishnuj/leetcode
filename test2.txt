@@ -1,2 +1,3 @@
 test 2 
 test 2 file modified
+test 2 file is modified now
