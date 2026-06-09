@@ -1,0 +1,12 @@
+class Solution {
+    public int maxCount(int m, int n, int[][] ops) {
+        if(ops==null||ops.length==0)return m*n;
+        int max_row=m;
+        int max_col=n;
+        for(int[] op:ops){
+            max_row=Math.min(op[0],max_row);
+            max_col=Math.min(op[1],max_col);
+        }
+        return max_row*max_col;
+    }
+}
