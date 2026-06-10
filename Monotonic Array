@@ -1,0 +1,21 @@
+class Solution {
+    public boolean isMonotonic(int[] nums) {
+        if(nums.length<=1) return true;
+        int len=nums.length;
+        boolean incre=true;
+        boolean diff=false;
+        for(int i=1;i<len;i++){
+            if(!diff&&nums[i]!=nums[i-1]){
+                diff=true;
+                if(nums[i]<nums[i-1])incre=false;
+            }else if(diff){
+                if(incre&&nums[i]<nums[i-1]){
+                    return false;
+                }else if(!incre&&nums[i]>nums[i-1]){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+}
