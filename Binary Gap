@@ -1,0 +1,17 @@
+class Solution {
+    public int binaryGap(int n) {
+        int start=-1;
+        int max=0;
+        int index=0;
+        while(n>0){
+            if(n%2!=0){
+                if(start!=-1)
+                max=Math.max(index-start,max);
+                start=index;  
+            }
+            index++;
+            n/=2;
+        }
+        return max;
+    }
+}
