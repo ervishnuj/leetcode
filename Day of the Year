@@ -1,0 +1,13 @@
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.temporal.ChronoUnit;
+class Solution {
+    public int dayOfYear(String date) {
+        int year=(((date.charAt(0)-'0')*1000)+((date.charAt(1)-'0')*100)+((date.charAt(2)-'0')*10)+(date.charAt(3)-'0'));
+        int month=((date.charAt(5)-'0')*10)+(date.charAt(6)-'0');
+        int day=((date.charAt(8)-'0')*10)+(date.charAt(9)-'0');
+        LocalDate s=LocalDate.of(year,month,day);
+        LocalDate e=LocalDate.of(year,01,01);
+        return (int)ChronoUnit.DAYS.between(e,s)+1;
+    }
+}
