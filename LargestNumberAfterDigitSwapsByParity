@@ -1,0 +1,38 @@
+import java.util.ArrayList;
+import java.util.List;
+
+class LargestNumberAfterDigitSwapsByParity {
+    public int largestInteger(int n) {
+        List<Integer> al = new ArrayList<>();
+        
+        while (n > 0) {
+            al.add(n % 10);
+            n /= 10;
+        }
+        
+        int size = al.size();
+        
+        for (int i = size - 1; i > 0; i--) {
+            int currentParity = al.get(i) % 2;
+            int maxIdx = i;
+            
+            for (int j = i - 1; j >= 0; j--) {
+                
+                if (al.get(j) % 2 == currentParity && al.get(j) > al.get(maxIdx)) {
+                    maxIdx = j;
+                }
+            }
+            
+            int temp = al.get(i);
+            al.set(i, al.get(maxIdx));
+            al.set(maxIdx, temp);
+        }
+        
+        int ans = 0;
+        for (int i = size - 1; i >= 0; i--) {
+            ans = ans * 10 + al.get(i);
+        }
+        
+        return ans;
+    }
+}
