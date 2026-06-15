@@ -1,0 +1,17 @@
+class LimitOccurrencesInSortedArray {
+    public int[] limitOccurrences(int[] nums, int k) {
+        int n=nums.length;
+        List<Integer> al=new ArrayList<>();
+        int inc=0;
+        HashMap<Integer,Integer> map=new HashMap<>();
+
+        for(Integer i:nums){
+            map.put(i,map.getOrDefault(i,0)+1);
+            if(map.get(i)<=k)al.add(i);
+        }
+        int[] arr=new int[al.size()];
+
+        for(int i:al)arr[inc++]=i;  
+        return arr;
+    }
+}
