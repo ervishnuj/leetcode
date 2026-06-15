@@ -1,0 +1,13 @@
+class DIStringMatch {
+    public int[] diStringMatch(String s) {
+        int left=0;int right=s.length();
+        int[] arr=new int[right+1];
+        for(int i=0;i<arr.length-1;i++){
+            char ch=s.charAt(i);
+            if(ch=='D')arr[i]=right--;
+            else arr[i]=left++;
+        }
+        arr[arr.length-1]=left;
+        return arr;
+    }
+}
