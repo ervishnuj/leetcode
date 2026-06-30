@@ -1,4 +1,4 @@
-public class CheckDivisibilityByDigitSumAndProduct {
+public class CheckDivisibilityByDigitSumAndProduct{
     public boolean checkDivisibility(int num) {    
         int sum=0;
         int mul=1;
