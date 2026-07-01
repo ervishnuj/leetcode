@@ -1,11 +1,15 @@
 public class RangeSumOfBST {
     public int rangeSumBST(TreeNode root, int low, int high) {
         if(root==null)return 0;
-        int val=0;
-        if(root.val>=low&&root.val<=high)val=root.val;
-        // int val=root.val;
-        val+=rangeSumBST(root.left,low,high)+rangeSumBST(root.right,low,high);
-        return val;
+        if(root.val>=low&&root.val<=high)return root.val+rangeSumBST(root.right,low,high)+rangeSumBST(root.left,low,high);
+        else if(root.val<low)return rangeSumBST(root.right,low,high);
+        else return rangeSumBST(root.left,low,high);
+        // if(root==null)return 0;
+        // int val=0;
+        // if(root.val>=low&&root.val<=high)val=root.val;
+        // // int val=root.val;
+        // val+=rangeSumBST(root.left,low,high)+rangeSumBST(root.right,low,high);
+        // return val;
     }
 }
 
