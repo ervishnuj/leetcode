@@ -3,40 +3,44 @@ import java.util.HashSet;
 public class NumberOfDifferentIntegersInAString {
     
     public int numDifferentIntegers(String word) {
-                HashSet<String> set = new HashSet<>();
 
-        int i = 0;
-
-        while (i < word.length()) {
-
-            // Skip letters
-            while (i < word.length() && !Character.isDigit(word.charAt(i))) {
+        HashSet<String> hs=new HashSet<>();
+        int i=0;int j=0;
+        int len=word.length();
+        while(i<len){
+            int ch=word.charAt(i)-'0';
+            while(i<len&&(ch<0||ch>9)){
+                
                 i++;
+                if(i<len)
+                ch=word.charAt(i)-'0';
+            }
+            if(i==len)break;
+            // remove intial zetos
+            j=0;
+            while(i<len&&ch==0){
+                i++;j++;
+                if(i<len)
+                ch=word.charAt(i)-'0';
             }
 
-            if (i == word.length()) break;
-
-            // Remove leading zeros
-            while (i < word.length() &&
-                   word.charAt(i) == '0') {
-                i++;
-            }
-
-            StringBuilder sb = new StringBuilder();
-
-            while (i < word.length() &&
-                   Character.isDigit(word.charAt(i))) {
+            // if(i==len)break;
+            if(i<len)
+            ch=word.charAt(i)-'0';
+            StringBuilder sb=new StringBuilder();
+            while(i<len&&ch>=0&&ch<=9){
                 sb.append(word.charAt(i));
                 i++;
+                if(i<len)
+                ch=word.charAt(i)-'0';
             }
-
-            if (sb.length() == 0)
-                set.add("0");
+            if (sb.length()==0&&j>0)
+                hs.add("0");
             else
-                set.add(sb.toString());
+                hs.add(sb.toString());
+            // if(i==len)break;
         }
-
-        return set.size();
+        return hs.size();
         // HashSet<String> hs=new HashSet<>();
         // int i=0;
         // int len=word.length();
