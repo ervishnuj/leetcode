@@ -10,7 +10,6 @@ public class NumberOfDifferentIntegersInAString {
         while(i<len){
             int ch=word.charAt(i)-'0';
             while(i<len&&(ch<0||ch>9)){
-                
                 i++;
                 if(i<len)
                 ch=word.charAt(i)-'0';
