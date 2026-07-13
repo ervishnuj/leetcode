@@ -1,15 +1,30 @@
 Class RemoveDuplicatesfromSortedArray{
 public int removeDuplicates(int[] nums) {
-        
-        return duplicateCount(nums,0,1,0)+1;
-    }
-    int duplicateCount(int[] num,int i,int j,int count){
-        if(j>=num.length)return count;
-        if(num[i]<num[j]){
-            count++;
-            num[count]=num[j];
-        }
-        return duplicateCount(num,i+1,j+1,count);
+        // This index stores values without duplicates:
+        int nonDuplicateIndex=0;
+        // this index is for finding duplicates: 
+        // int findDuplicateIndex=1;
+        // this is the size of the array:
+        int arraySize=nums.length;
 
+        for(int i=0;i<arraySize;i++){
+            if(nums[nonDuplicateIndex]!=nums[i]){
+                nums[++nonDuplicateIndex]=nums[i];
+            }
+        }
+
+        // while(findDuplicateIndex<arraySize){
+        //     while(findDuplicateIndex<arraySize&&nums[findDuplicateIndex]==nums[nonDuplicateIndex]){
+        //         findDuplicateIndex++;
+        //     }
+        //     if(findDuplicateIndex<arraySize){
+        //         nums[++nonDuplicateIndex]=nums[findDuplicateIndex];
+        //     }
+        // }
+        // After finding a non-duplicate value, I am moving the index by one point.
+        return nonDuplicateIndex+1;
     }
+      
+    }
+   
 }
