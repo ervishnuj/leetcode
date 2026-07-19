@@ -1,3 +1,5 @@
+import java.util.HashMap;
+
 public class CountNumberOfPairsWithAbsoluteDifferenceK {
     public int countKDifference(int[] nums, int k) {
         // HashMap<Integer,Integer> map=new HashMap<>();
@@ -25,7 +27,7 @@ public class CountNumberOfPairsWithAbsoluteDifferenceK {
         // }
         // return res;
         HashMap<Integer, Integer> map = new HashMap<>();
-        int len = nums.length;
+        // int len = nums.length;
         int res = 0;
         for (Integer num : nums) {
             res += map.getOrDefault(num - k, 0);
