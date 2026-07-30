@@ -1,0 +1,33 @@
+class MinimumChangesToMakeAlternatingBinaryString {
+    public int minOperations(String s) {
+        int len=s.length();
+        StringBuilder sb1=new StringBuilder();
+        StringBuilder sb2=new StringBuilder();
+        int match1=0;
+        int match2=0;
+        int i=0;
+        while(i<len){
+            if(i%2==0){
+                if(s.charAt(i)=='1'){
+                    match1++;
+                }
+                if(s.charAt(i)=='0'){
+                    match2++;
+                }
+                // sb1.append("1");
+                // sb2.append("0");
+            }else{
+                if(s.charAt(i)=='1'){
+                    match2++;
+                }
+                if(s.charAt(i)=='0'){
+                    match1++;
+                }
+                // sb2.append("1");
+                // sb1.append("0");
+            }
+            i++;
+        }
+        return match1<match2?len-match2:len-match1;
+    }
+}
