@@ -1,0 +1,40 @@
+public class ReplaceAllQuestionMarkstoAvoidConsecutiveRepeatingCharacters {
+    public string ModifyString(string s) {
+        // StringBuilder sb=new StringBuilder();
+        // for(int i=0;i<s.Length;i++){
+        //     if(s[i]=='?'){
+        //         if(i==0&&i+1<s.Length){
+        //             sb.Append(s[i+1]!='a'?'a':'b');
+        //         }else if(i==0&&i==s.Length-1){
+        //             sb.Append('a');
+        //         }else if(i+1<s.Length){
+        //             sb.Append((s[i-1]!='a'&&s[i+1]!='a')?'a':(s[i-1]!='b'&&s[i+1]!='b')?'b':'c');
+        //         }else{
+        //             sb.Append((s[i-1]!='a')?'a':(s[i-1]!='b')?'b':'c');
+        //         }
+        //     }
+        //     string result = sb.ToString();
+        //     return result;
+
+        char[] arr = s.ToCharArray();
+        int n = arr.Length;
+
+        for (int i = 0; i < n; i++) {
+            if (arr[i] == '?') {
+                // Try 'a', 'b', 'c' one by one
+                for (char c = 'a'; c <= 'c'; c++) {
+                    // Check if previous character matches
+                    bool matchPrev = (i > 0 && arr[i - 1] == c);
+                    // Check if next character matches
+                    bool matchNext = (i < n - 1 && arr[i + 1] == c);
+
+                    if (!matchPrev && !matchNext) {
+                        arr[i] = c;
+                        break; // Valid character found, break the inner 'a'-'c' loop
+                    }
+                }
+            }
+        }
+        return new string(arr);
+    }
+}
