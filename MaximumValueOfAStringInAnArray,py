@@ -1,0 +1,12 @@
+class MaximumValueOfAStringInAnArray:
+    def maximumValue(self, strs: list[str]) -> int: 
+        max_value=0
+        for i in strs:
+            val=0
+            if i.isdigit():
+                val=int(i)
+            else:
+                val=len(i)
+            max_value=max(max_value,val)
+
+        return max_value
